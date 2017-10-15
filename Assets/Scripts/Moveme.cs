@@ -30,6 +30,7 @@ public class Moveme : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        scoreText.text = "Health: " + count.ToString();
         timebetweenattacks -= Time.deltaTime;
         haxis = Input.GetAxis("Horizontal");
         vaxis = Input.GetAxis("Vertical");
@@ -40,6 +41,7 @@ public class Moveme : MonoBehaviour {
             timebetweenattacks = 0.5f;
 
         }
+        
 
     }
     private void FixedUpdate()
@@ -59,8 +61,15 @@ public class Moveme : MonoBehaviour {
             scoreText.text = "Health: " + count.ToString();
 
         }
+        if (count == 0)
+        {
+            Application.LoadLevel("FirstMaze");
+            count = 10;
+        }
+
         //slider.value = 1 - (health / 100f);
     }
+    
 
 
 }
